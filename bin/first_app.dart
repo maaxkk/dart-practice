@@ -19,6 +19,13 @@ void main(List<String> arguments) {
   // Lesson16();
   // Lesson17(arguments);
   // Lesson18(arguments);
-  Lesson19();
+  // Lesson19();
+  // Lesson20();
+  // Lesson21();
+  // Lesson22();
+  // Lesson23();
+  // Lesson24();
+  // Lesson25();
+  Lesson26();
 }
 
