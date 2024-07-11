@@ -3,6 +3,7 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:csv/csv.dart';
+import 'package:equatable/equatable.dart';
 
 part 'lesson1.dart';
 part 'lesson2.dart';
@@ -30,5 +31,7 @@ part 'lesson23.dart';
 part 'lesson24.dart';
 part 'lesson25.dart';
 part 'lesson26.dart';
-// part 'lesson20.dart';
-// part 'lesson20.dart';
+part 'lesson27.dart';
+// part 'lesson28.dart';
+// part 'lesson29.dart';
+// part 'lesson30.dart';

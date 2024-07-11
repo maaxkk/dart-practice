@@ -4,20 +4,20 @@ part of 'lessons.dart';
 void Lesson25() {
   final b2 = BankAccount2(100);
   // b2._balance = 100000; // error
-  print(b2.balance);
+  // print(b2.balance);
 
   const x = ClassConst(50);
   const y = ClassConst(50);
   const z = ClassConst(100);
-  print(x == y);
-  print(x == z);
+  // print(x == y);
+  // print(x == z);
 
   // final animal = Animal(age: 10);
   // animal.sleep();
 
   final dog = Dog(age: 12);
-  dog.bark();
-  dog.sleep();
+  // dog.bark();
+  // dog.sleep();
 
   // final cow = Cow(age: 14);
   // cow.moo();
@@ -38,13 +38,31 @@ void Lesson25() {
     Square(side: 5),
     Circle(radius: 10),
   ];
-  shapes.forEach(printValues);
+  // shapes.forEach(printValues);
+
+  final shapesJson = [
+    {
+      'type': 'square',
+      'side': 5.0,
+    },
+    {
+      'type': 'circle',
+      'radius': 5.0,
+    },
+    {
+      'type': 'triangle',
+      'radius': 5.0,
+    },
+  ];
+
+  final shapes2 = shapesJson.map((shapeJson) => Shape.fromJson(shapeJson));
+  shapes2.forEach(printValues);
 }
 
 class Circle extends Shape {
   final double radius;
 
-  Circle({required this.radius});
+  const Circle({required this.radius});
 
   @override
   double get area => pi * radius * radius;
@@ -77,6 +95,28 @@ void printValues(Shape shape) {
 abstract class Shape {
   double get area;
   double get perimeter;
+
+  const Shape();
+
+  factory Shape.fromJson(Map<String, Object> json) {
+    final type = json['type'];
+    switch(type) {
+      case 'square':
+        final side = json['side'];
+        if (side is double) {
+          return Square(side: side);
+        }
+        throw UnsupportedError('Invalid or missing side property');
+      case 'circle':
+        final radius = json['radius'];
+        if (radius is double) {
+          return Circle(radius: radius);
+        }
+        throw UnsupportedError('Invalid or missing side property');
+      default:
+        throw UnimplementedError('Shape $type not recognized');
+    }
+  }
 }
 
 class Animal {
